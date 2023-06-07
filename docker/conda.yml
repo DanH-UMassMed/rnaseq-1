@@ -1,0 +1,9 @@
+name: rnaseq-1.0
+channels:
+  - bioconda
+  - conda-forge
+dependencies:
+  - bioconda::fastqc
+  - bioconda::star=2.6.1d # don't upgrade me - 2.7X indices incompatible with iGenomes.
+  - bioconda::rsem 
+  - bioconda::multiqc

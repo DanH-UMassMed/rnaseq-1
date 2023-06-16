@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-module load fastqc
 output_data="$1"
 reads="$2"
 

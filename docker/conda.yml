@@ -1,9 +1,10 @@
-name: rnaseq-1.0
+name: simple-rnaseq 
 channels:
   - bioconda
   - conda-forge
 dependencies:
   - bioconda::fastqc=0.11.8
   - bioconda::star=2.6.1d 
-  - bioconda::rsem=1.3.1 
-  - bioconda::multiqc=1.14
+  - bioconda::rsem=1.3.1
+  - pip:
+    - multiqc==1.7

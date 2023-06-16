@@ -17,9 +17,8 @@ nextflow.enable.dsl = 2
  * given `params.reads` specify on the run command line `--reads some_value`.
  */
 
-params.reads = "$baseDir/../input_data/*.fq"
-params.outdir = "$baseDir/../output_data"
-params.multiqc = "$baseDir/../output_data/1multiqc1"
+params.reads = "$baseDir/input_data/*.fq"
+params.outdir = "$baseDir/output_data"
 
 log.info """\
  R N A S E Q - N F   P I P E L I N E
@@ -35,10 +34,10 @@ include { MULTIQC } from './modules/multiqc'
 
 workflow {
   reads_param_ch = channel.fromPath( params.reads, checkIfExists: true ) 
-  outdir_param_ch = Channel.value( params.outdir )
-  //FASTQC(params.outdir, reads_param_ch)
-  outdir_param_ch.view()
-  MULTIQC(outdir_param_ch)
+  output_dir_param_ch = Channel.value( params.output_dir )
+  FASTQC(output_dir_param_ch, reads_param_ch)
+  output_dir_param_ch.view()
+  MULTIQC(output_dir_param_ch)
 }
 
 /* 

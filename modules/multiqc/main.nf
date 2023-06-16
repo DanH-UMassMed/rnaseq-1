@@ -2,13 +2,13 @@
 process MULTIQC {
     
     input:
-    val out_dir
+    val output_dir
     
     output:
     path 'multiqc_report.html'
 
     script:
     """
-    nf_multiqc.sh "$out_dir"
+    nf_multiqc.sh "$output_dir"
     """
 }

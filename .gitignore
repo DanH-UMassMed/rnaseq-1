@@ -1,0 +1,8 @@
+# Directories to ignore
+.nextflow/
+input_data/
+output_data/
+work/
+
+# Files to ignore
+.nextflow.log*

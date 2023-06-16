@@ -25,4 +25,4 @@ COPY conda.yml /
 RUN mamba env create -f /conda.yml && conda clean -a
 RUN echo "conda activate simple-rnaseq" >> ~/.bashrc 
 
-
+RUN mkdir /etc/localtime

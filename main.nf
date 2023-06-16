@@ -18,13 +18,13 @@ nextflow.enable.dsl = 2
  */
 
 params.reads = "$baseDir/input_data/*.fq"
-params.outdir = "$baseDir/output_data"
+params.output_dir = "$baseDir/output_data"
 
 log.info """\
  R N A S E Q - N F   P I P E L I N E
  ===================================
  reads        : ${params.reads}
- outdir       : ${params.outdir}
+ output_dir   : ${params.output_dir}
  """
 
 // import modules
@@ -44,5 +44,5 @@ workflow {
  * completion handler
  */
 workflow.onComplete {
-	log.info ( workflow.success ? "\nDone! Open the following report in your browser --> $params.multiqc/multiqc_report.html\n" : "Oops .. something went wrong" )
+	log.info ( workflow.success ? "\nDone! Open the following report in your browser --> $params.output_dir/multiqc/multiqc_report.html\n" : "Oops .. something went wrong" )
 }

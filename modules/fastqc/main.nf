@@ -1,15 +1,17 @@
 
 process FASTQC {
-    container 'danhumassmed/rnaseq-tools:1.0.0'
+    container 'biocontainers/fastqc:v0.11.5'
+    tag "FASTQC on $sample_id"
+
     input:
-    val  output_dir
-    path reads
+    tuple val(sample_id), path(reads)
 
     output:
-    val output_dir
-    
+    path "fastqc_${sample_id}_logs"
+
     script:
     """
-    fastqc.sh "$output_dir" "$reads"
+    mkdir fastqc_${sample_id}_logs
+    fastqc -o fastqc_${sample_id}_logs -f fastq -q ${reads}
     """
 }

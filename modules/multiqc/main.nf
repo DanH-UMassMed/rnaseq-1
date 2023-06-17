@@ -1,14 +1,16 @@
 
 process MULTIQC {
-    
+    container 'biocontainers/multiqc:1.10.1--py_0'
+    publishDir params.outdir, mode:'copy'
+
     input:
-    val output_dir
-    
+    path '*'
+
     output:
     path 'multiqc_report.html'
 
     script:
     """
-    nf_multiqc.sh "$output_dir"
+    multiqc .
     """
 }
